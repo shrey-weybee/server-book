@@ -1,0 +1,95 @@
+{
+  "categories": [
+    {
+      "name": "Linux/service",
+      "description": "Server Commands",
+      "commands": [
+        { "command": "sudo systemctl enable X_domain_X.service", "name": "", "description": "service enable" },
+        { "command": "sudo systemctl disable X_domain_X.service", "name": "", "description": "service disable" },
+        { "command": "sudo systemctl start X_domain_X.service", "name": "", "description": "Server Commands" },
+        { "command": "sudo systemctl status X_domain_X.service", "name": "", "description": "Server Commands" },
+        { "command": "sudo nano /etc/systemd/system/X_domain_X.service", "name": "", "description": "Server Commands" },
+        { "command": "[Unit]\nDescription=X_domain_X\n\n[Service]\nWorkingDirectory=X_net_project_path_X\nExecStart=/usr/bin/dotnet X_net_dll_path_X\nRestart=always\n# Restart service after 10 seconds if the dotnet service crashes:\nRestartSec=10\nKillSignal=SIGINT\nSyslogIdentifier=X_domain_X\nUser=root\nEnvironment=ASPNETCORE_ENVIRONMENT=Production\nEnvironment=DOTNET_PRINT_TELEMETRY_MESSAGE=false\n\n[Install]\nWantedBy=multi-user.target\n", "name": "", "description": "Server Commands" }
+
+      ]
+    },
+    {
+      "name": "Nginx/config",
+      "commands": [
+        {
+          "command": "server {\n        listen 80 ;\n        root /var/www/X_domain_X/public;\n        index index.php index.html index.htm index.nginx-debian.html;\n        server_name X_domain_X www.X_domain_X;\n        location / {\n                try_files $uri $uri/ /index.php?$query_string;\n        }\n        location ~ \\.php$ {\n                include snippets/fastcgi-php.conf;\n                fastcgi_pass unix:/run/php/phpX_php_v_X-fpm.sock;\n        }\n         location ~ /.well-known {\n                allow all;\n        }\n}",
+          "name": "Laravel Config",
+          "description": "This Is Nginx Config File For Laravel"
+        },
+        {
+          "command": "server {\n        listen 80;\n        root /var/www/X_domain_X;\n        index index.html ;\n        server_name X_domain_X *.X_domain_X;\n        location / {\n                        try_files $uri $uri/ /index.html;\n        }\n}",
+          "name": "Angular Config",
+          "description": ""
+        },
+        {
+          "command": "server {\n        listen 80;\n        root /var/www/X_domain_X;\n        index index.html ;\n        server_name X_domain_X *.X_domain_X;\n        location / {\n                     try_files $uri $uri/ =404;\n        }\n}",
+          "name": "Static Website",
+          "description": ""
+        },
+        {
+          "command": "server {\n                listen 80;\n                server_name   X_domain_X;\n                location / {\n                                proxy_pass         http://localhost:X_port_X;\n                                proxy_http_version 1.1;\n                                proxy_set_header   Upgrade $http_upgrade;\n                                proxy_set_header   Connection keep-alive;\n                                proxy_set_header   Host $host;\n                                proxy_cache_bypass $http_upgrade;\n                                proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;\n                                proxy_set_header   X-Forwarded-Proto $scheme;\n                }\n}",
+          "name": ".Net Core Config",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "Nginx/common",
+      "commands": [
+        { "command": "sudo systemctl restart nginx", "name": "nginx restart", "description": "" },
+        { "command": "sudo systemctl stop nginx", "name": "nginx stop", "description": "" },
+        { "command": "sudo systemctl status nginx", "name": "nginx status", "description": "" },
+        { "command": "sudo nginx -t", "name": "test config files", "description": "" },
+        {
+          "command": "sudo ln -s /etc/nginx/sites-available/X_domain_X /etc/nginx/sites-enabled",
+          "name": "",
+          "description": "Create Link To Sites Enable Folder To Enable Config"
+        },
+        {
+          "command": "sudo nano /etc/nginx/sites-available/X_domain_X",
+          "name": "",
+          "description": "Create Nginx Config File"
+        }
+      ]
+    },
+    {
+      "name": "Linux/common",
+      "commands": [
+        { "command": "sudo mkdir -p /var/www/X_domain_X/", "name": "", "description": "Create Folder For Project" },
+        {
+          "command": "sudo chmod 777 -R /var/www/X_domain_X/",
+          "name": "Change Permissions For Folder",
+          "description": "Above Command Gives All Permissions So Change According Your Requirements "
+        },
+        { "command": "cd /var/www/X_domain_X/", "name": "", "description": "Go To That Folder" },
+        { "command": "sudo git clone X_git_url_X .", "name": "", "description": "Clone Project" },
+        { "command": "cd ~/.ssh/", "name": "", "description": "go to ssh" },
+        { "command": "ssh-keygen -o -t rsa -C \"X_user_email_X\"", "name": "", "description": "create ssh key" },
+        { "command": "cat id_rsa.pub", "name": "", "description": "for copy pub key" }
+      ]
+    },
+    {
+      "name": "Linux/alias",
+      "commands": [
+        { "command": "sudo nano ~/.bashrc", "name": "", "description": "open alias file" },
+        { "command": "source ~/.bashrc", "name": "", "description": "refresh alias" },
+        { "command": "alias X_domain_X-pull='cd /var/www/X_domain_X && git checkout . && git pull'", "name": "", "description": "open alias file" },
+        { "command": "alias X_domain_X-release='cd /var/www/X_domain_X &&  sudo systemctl stop X_domain_X.service  &&  dotnet publish --configuration Release && sudo systemctl start X_domain_X.service && sudo systemctl status X_domain_X.service", "name": "", "description": "release dot net project" }
+      ]
+    }
+  ],
+  "params": [
+    { "name": "Domain", "value": "X_domain_X", "example": "weybee.in" },
+    { "name": "Port", "value": "X_port_X", "example": "8000" },
+    { "name": "Git Url", "value": "X_git_url_X", "example": "" },
+    { "name": "User Email", "value": "X_user_email_X", "example": "fenny@gmail.com" },
+    { "name": "Php version", "value": "X_php_v_X ", "example": "7.4" },
+    { "name": ".net dll path", "value": "X_net_dll_path_X ", "example": "" },
+    { "name": ".net project path", "value": "X_net_project_path_X", "example": "" }
+  ]
+}
