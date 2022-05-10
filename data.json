@@ -9,8 +9,11 @@
         { "command": "sudo systemctl start X_domain_X.service", "name": "", "description": "Server Commands" },
         { "command": "sudo systemctl status X_domain_X.service", "name": "", "description": "Server Commands" },
         { "command": "sudo nano /etc/systemd/system/X_domain_X.service", "name": "", "description": "Server Commands" },
-        { "command": "[Unit]\nDescription=X_domain_X\n\n[Service]\nWorkingDirectory=X_net_project_path_X\nExecStart=/usr/bin/dotnet X_net_dll_path_X\nRestart=always\n# Restart service after 10 seconds if the dotnet service crashes:\nRestartSec=10\nKillSignal=SIGINT\nSyslogIdentifier=X_domain_X\nUser=root\nEnvironment=ASPNETCORE_ENVIRONMENT=Production\nEnvironment=DOTNET_PRINT_TELEMETRY_MESSAGE=false\n\n[Install]\nWantedBy=multi-user.target\n", "name": "", "description": "Server Commands" }
-
+        {
+          "command": "[Unit]\nDescription=X_domain_X\n\n[Service]\nWorkingDirectory=X_net_project_path_X\nExecStart=/usr/bin/dotnet X_net_dll_path_X\nRestart=always\n# Restart service after 10 seconds if the dotnet service crashes:\nRestartSec=10\nKillSignal=SIGINT\nSyslogIdentifier=X_domain_X\nUser=root\nEnvironment=ASPNETCORE_ENVIRONMENT=Production\nEnvironment=DOTNET_PRINT_TELEMETRY_MESSAGE=false\n\n[Install]\nWantedBy=multi-user.target\n",
+          "name": "",
+          "description": "Server Commands"
+        }
       ]
     },
     {
@@ -78,16 +81,24 @@
       "commands": [
         { "command": "sudo nano ~/.bashrc", "name": "", "description": "open alias file" },
         { "command": "source ~/.bashrc", "name": "", "description": "refresh alias" },
-        { "command": "alias X_domain_X-pull='cd /var/www/X_domain_X && git checkout . && git pull'", "name": "", "description": "open alias file" },
-        { "command": "alias X_domain_X-release='cd /var/www/X_domain_X &&  sudo systemctl stop X_domain_X.service  &&  dotnet publish --configuration Release && sudo systemctl start X_domain_X.service && sudo systemctl status X_domain_X.service", "name": "", "description": "release dot net project" }
+        {
+          "command": "alias X_domain_X-pull='cd /var/www/X_domain_X && git checkout . && git pull'",
+          "name": "",
+          "description": "open alias file"
+        },
+        {
+          "command": "alias X_domain_X-release='cd /var/www/X_domain_X &&  sudo systemctl stop X_domain_X.service  &&  dotnet publish --configuration Release && sudo systemctl start X_domain_X.service && sudo systemctl status X_domain_X.service",
+          "name": "",
+          "description": "release dot net project"
+        }
       ]
     }
   ],
   "params": [
-    { "name": "Domain", "value": "X_domain_X", "example": "weybee.in" },
+    { "name": "Domain", "value": "X_domain_X", "example": "example.com" },
     { "name": "Port", "value": "X_port_X", "example": "8000" },
     { "name": "Git Url", "value": "X_git_url_X", "example": "" },
-    { "name": "User Email", "value": "X_user_email_X", "example": "fenny@gmail.com" },
+    { "name": "User Email", "value": "X_user_email_X", "example": "example@gmail.com" },
     { "name": "Php version", "value": "X_php_v_X ", "example": "7.4" },
     { "name": ".net dll path", "value": "X_net_dll_path_X ", "example": "" },
     { "name": ".net project path", "value": "X_net_project_path_X", "example": "" }
